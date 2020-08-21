@@ -1,4 +1,33 @@
-使用`file`命令发现 `disk_dump` 为磁盘镜像, 挂载后列出目录:
+
+- 战队信息
+
+战队信息：JJU划水二队
+战队：406546	
+战队排名：338
+
+# 解题情况
+
+## 题目序号`1` 题目名称`签到`
+
+第一次见这种比赛30分钟后自动放出`FLAG ：）`的题
+
+> `flag{同舟共济扬帆起，乘风破浪万里航。}`
+
+
+
+## 题目序号2 题目名称：`the_best_ctf_game`:
+
+用任意一款HEX编辑器打开FLAG文件，发现FLAG字样，使用strings进行可见字符串过滤
+```shell
+archme@gentoo$ strings -1 flag
+```
+得到`flag{65e02f26-0d6e-463f-bc63-2df733e47fbe}`
+
+
+
+## 题目序号3 题目名称：电脑被黑
+
+解压文件，使用`file`命令发现 `disk_dump` 为磁盘镜像, 挂载后列出目录:
 
 ```shell
 .
@@ -50,3 +79,11 @@ print(flag)
 zzh@gentoo$ python3 decrypt.py
 flag{e5d7c4ed-b8f6-4417-8317-b809fc26c047}
 ```
+
+## 题目序号8 题目名称 BD
+
+题目涉及RSA加密，因此尝试低解密指数攻击
+
+
+
+
