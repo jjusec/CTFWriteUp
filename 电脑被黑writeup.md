@@ -25,7 +25,8 @@
 
    `ext4magic disk_dump -R -a $(date -d "-5day" +%s)`
 
- 被恢复的文件在`./RECOVERDIR/`内为 `./misc01/flag.txt` 为恢复文件，但此文件被demo加密，于是开始逆向demo, demo 未加壳，直接得到伪代码。
+ 被恢复的文件在`./RECOVERDIR/`内为 `./misc01/flag.txt` 为恢复文件，但此文件被demo加密，于是开始逆向demo, demo 未加壳，直接得到伪代码:
+ ![PIC](https://raw.githubusercontent.com/jjusec/CTFWriteUp/master/%E6%8D%95%E8%8E%B7.PNG)
  
  
  根据逻辑写出解密脚本
@@ -42,5 +43,10 @@ for tmp in res:
     v4=v4+34
     v5=(v5+2)&0xF
 print(flag)
-
  ```
+ 
+运行`decrypt.py`得到`flag`:
+```shell
+zzh@gentoo$ python3 decrypt.py
+flag{e5d7c4ed-b8f6-4417-8317-b809fc26c047}
+```
